@@ -326,7 +326,7 @@ local GuildRanks = {};
 ------------------------
 ------ DEBUG ----------
 ------------------------
-local vdtDebug = false;
+local vdtDebug = true;
 function GRM_Print(strName, tData) 
     if ViragDevTool_AddData and vdtDebug then 
         ViragDevTool_AddData(tData, strName) 
@@ -4947,8 +4947,12 @@ GRM.GetRosterName = function(button, isMouseClick)
         else
             local string1, string2 = button.string1:GetText(), button.string2:GetText()
             --if string.find(string2, "-") == nil then string2 = string2 .. "-" .. GRM_G.realmName  end
-            --GRM_Print("GRM.GetRosterNameLegacy()", {string2, string1})
-            name = GRM.GetRosterNameLegacy(string2, string1)
+            --GRM_Print("GRM.GetRosterNameLegacy()", { string2, string1 })
+            --GRM_Print("string2:", string2)
+            --GRM_Print("string1", string1)
+            if string1 ~= nil and string2 ~= nil then 
+                name = GRM.GetRosterNameLegacy(string2, string1)
+            end
             --GRM_Print("name ~= nil and name ~= ", name ~= nil and name ~= "")
             if name ~= nil and name ~= "" then
                 if string.find(name, "-") == nil then
